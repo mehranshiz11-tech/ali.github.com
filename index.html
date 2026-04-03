@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحه شخصی</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <title>Personal Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
       margin: 0;
@@ -13,22 +14,22 @@
     }
     body, html {
       height: 100%;
-      font-family: 'Vazirmatn', sans-serif;
+      font-family: 'Roboto', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('https://source.unsplash.com/1920x1080/?abstract,gradient') no-repeat center center/cover;
-      color: white;
+      background: #ffffff;
+      color: #333;
       text-align: center;
     }
     .container {
-      background: rgba(0, 0, 0, 0.5);
       padding: 50px 30px;
       border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     h1 {
       font-size: 3rem;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     .social-icons {
       display: flex;
@@ -37,27 +38,28 @@
       margin-top: 20px;
     }
     .social-icons a {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 50px;
       height: 50px;
-      line-height: 50px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
+      background: #f0f0f0;
+      color: #333;
       font-size: 1.5rem;
       transition: all 0.3s ease;
+      text-decoration: none;
     }
     .social-icons a:hover {
-      background: white;
-      color: #000;
+      background: #333;
+      color: #fff;
       transform: scale(1.2);
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Mehrān Farahi</h1>
+    <h1>Mehran Farahi</h1>
     <div class="social-icons">
       <a href="https://www.youtube.com/@YourChannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
       <a href="https://www.instagram.com/YourUsername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
