@@ -4,20 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mehranshiz11 Tech - سایت شخصی</title>
+  <!-- فونت فارسی -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome برای آیکون شبکه‌های اجتماعی -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     /* Reset & Global */
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
     body { font-family: 'Vazirmatn', sans-serif; background:#f4f4f9; color:#333; line-height:1.6; }
-
+    
     /* Header */
     header { background:#4CAF50; color:white; text-align:center; padding:60px 20px; }
     header h1 { font-size:3em; margin-bottom:10px; }
     header p { font-size:1.2em; }
 
     /* Navigation */
-    nav { text-align:center; margin:20px 0; }
-    nav a { text-decoration:none; margin:0 15px; color:#4CAF50; font-weight:bold; transition:0.3s; }
+    nav { position: sticky; top:0; background:white; text-align:center; padding:15px 0; box-shadow:0 2px 5px rgba(0,0,0,0.1); z-index:100; }
+    nav a { text-decoration:none; margin:0 20px; color:#4CAF50; font-weight:bold; transition:0.3s; }
     nav a:hover { color:#2e7d32; }
 
     /* Sections */
@@ -28,6 +31,7 @@
     .projects { display:flex; flex-wrap:wrap; gap:20px; }
     .project { background:white; padding:25px; border-radius:10px; flex:1 1 250px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
     .project:hover { transform: translateY(-5px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
+    .project img { width:100%; border-radius:8px; margin-bottom:10px; }
     .project h3 { margin-bottom:10px; }
     .project a.button { display:inline-block; padding:10px 20px; background:#4CAF50; color:white; border-radius:5px; text-decoration:none; margin-top:10px; transition:0.3s; }
     .project a.button:hover { background:#2e7d32; }
@@ -39,8 +43,13 @@
 
     /* Footer */
     footer { text-align:center; padding:20px; background:#222; color:white; margin-top:40px; font-size:0.9em; }
+
+    /* Responsive */
+    @media(max-width:600px) {
+      .projects { flex-direction:column; }
+      nav a { display:block; margin:10px 0; }
+    }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -64,19 +73,22 @@
   <h2>پروژه‌ها</h2>
   <div class="projects">
     <div class="project">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+1" alt="پروژه ۱">
       <h3>پروژه ۱</h3>
       <p>توضیح کوتاه پروژه و فناوری‌های استفاده شده.</p>
-      <a href="#" class="button">جزئیات</a>
+      <a href="#" class="button">GitHub / Live</a>
     </div>
     <div class="project">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+2" alt="پروژه ۲">
       <h3>پروژه ۲</h3>
       <p>توضیح کوتاه پروژه و فناوری‌های استفاده شده.</p>
-      <a href="#" class="button">جزئیات</a>
+      <a href="#" class="button">GitHub / Live</a>
     </div>
     <div class="project">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+3" alt="پروژه ۳">
       <h3>پروژه ۳</h3>
       <p>توضیح کوتاه پروژه و فناوری‌های استفاده شده.</p>
-      <a href="#" class="button">جزئیات</a>
+      <a href="#" class="button">GitHub / Live</a>
     </div>
   </div>
 </section>
@@ -95,6 +107,24 @@
 <footer>
   © 2026 Mehranshiz11 Tech. All rights reserved.
 </footer>
+
+<!-- JS کوچک برای Highlight منو فعال -->
+<script>
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(sec => {
+      const sectionTop = sec.offsetTop - 60;
+      if(scrollY >= sectionTop) current = sec.getAttribute("id");
+    });
+    navLinks.forEach(a => {
+      a.classList.remove("active");
+      if(a.getAttribute("href") === "#" + current) a.classList.add("active");
+    });
+  });
+</script>
 
 </body>
 </html>
