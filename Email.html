@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Welcome to my page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<style>
+			.contact-form {
+				margin-top: 20px;
+			}
+			.contact-form input,
+			.contact-form textarea {
+				width: 100%;
+				padding: 10px;
+				margin: 8px 0;
+				border: none;
+				border-radius: 5px;
+			}
+			.contact-form button {
+				padding: 10px 20px;
+				border: none;
+				background: #ffffff;
+				color: #000;
+				border-radius: 5px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body class="is-preload">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+
+			<div id="main">
+
+				<header id="header">
+					<h1>Mehran Farahi</h1>
+					<p>Ai &nbsp;&bull;&nbsp; coding &nbsp;&bull;&nbsp; Never asked for this</p>
+
+					<!-- ✅ Contact Form -->
+					<form action="send.php" method="POST" class="contact-form">
+						<input type="text" name="name" placeholder="Your Name" required>
+						<input type="email" name="email" placeholder="Your Email" required>
+						<textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+						<button type="submit">Send Message</button>
+					</form>
+
+				</header>
+
+				<footer id="footer">
+					<span class="copyright">&copy; Untitled. Design: <a href="#">Mehran</a>.</span>
+				</footer>
+
+			</div>
+		</div>
+
+		<script>
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+
+	</body>
+</html>
