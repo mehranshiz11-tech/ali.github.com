@@ -1,117 +1,150 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Gallery</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Gallery</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-    <style>
-        body {
-            margin: 0;
-            background: black;
-            color: white;
-            font-family: Arial;
-        }
+	<style>
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+		gap: 10px;
+		max-width: 700px;
+		margin: 20px auto;
+	}
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            padding: 20px;
-        }
+	.gallery img {
+		width: 100%;
+		height: 90px;
+		object-fit: cover;
+		cursor: pointer;
+		border-radius: 6px;
+	}
 
-        .gallery img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            cursor: pointer;
-        }
+	/* مودال */
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.9);
+		text-align: center;
+	}
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            text-align: center;
-        }
+	.modal img {
+		max-width: 80%;
+		max-height: 80%;
+		margin-top: 60px;
+		border-radius: 10px;
+	}
 
-        .modal img {
-            max-width: 80%;
-            max-height: 80%;
-            margin-top: 60px;
-        }
+	.close {
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		font-size: 30px;
+		color: white;
+		cursor: pointer;
+	}
 
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 30px;
-            cursor: pointer;
-        }
+	.nav-btn {
+		position: absolute;
+		top: 50%;
+		font-size: 40px;
+		color: white;
+		cursor: pointer;
+		user-select: none;
+	}
 
-        .nav {
-            position: absolute;
-            top: 50%;
-            font-size: 40px;
-            cursor: pointer;
-        }
-
-        .prev { left: 20px; }
-        .next { right: 20px; }
-    </style>
+	.prev { left: 20px; }
+	.next { right: 20px; }
+	</style>
 </head>
 
-<body>
+<body class="is-preload">
+<div id="wrapper">
+	<div id="bg"></div>
+	<div id="overlay"></div>
 
-<div class="gallery" id="gallery"></div>
+	<div id="main">
 
-<div class="modal" id="modal">
-    <span class="close" onclick="closeModal()">×</span>
-    <span class="nav prev" onclick="change(-1)">❮</span>
-    <img id="modalImg">
-    <span class="nav next" onclick="change(1)">❯</span>
+		<header id="header">
+			<h1>Mehran Farahi</h1>
+			<p>Gallery</p>
+		</header>
+
+		<!-- گالری -->
+		<div class="gallery" id="gallery"></div>
+
+		<!-- مودال -->
+		<div id="modal" class="modal">
+			<span class="close" onclick="closeModal()">&times;</span>
+			<span class="nav-btn prev" onclick="changeImage(-1)">❮</span>
+			<img id="modalImg">
+			<span class="nav-btn next" onclick="changeImage(1)">❯</span>
+		</div>
+
+		<footer id="footer">
+			<span class="copyright">&copy; Mehran</span>
+		</footer>
+
+	</div>
 </div>
 
 <script>
+window.onload = function() { document.body.classList.remove('is-preload'); }
+
+// 🔥 برای تست (اگر عکس نداری)
 const images = [
-  "https://picsum.photos/300?1",
-  "https://picsum.photos/300?2",
-  "https://picsum.photos/300?3",
-  "https://picsum.photos/300?4",
-  "https://picsum.photos/300?5"
+ "https://picsum.photos/300?1",
+ "https://picsum.photos/300?2",
+ "https://picsum.photos/300?3",
+ "https://picsum.photos/300?4",
+ "https://picsum.photos/300?5",
+ "https://picsum.photos/300?6",
+ "https://picsum.photos/300?7",
+ "https://picsum.photos/300?8",
+ "https://picsum.photos/300?9",
+ "https://picsum.photos/300?10"
 ];
 
 const gallery = document.getElementById("gallery");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
 
-let index = 0;
+let currentIndex = 0;
 
-images.forEach((src, i) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.onclick = () => open(i);
-    gallery.appendChild(img);
+// ساخت گالری
+images.forEach((src, index) => {
+	const img = document.createElement("img");
+	img.src = src;
+	img.onclick = () => openModal(index);
+	gallery.appendChild(img);
 });
 
-function open(i) {
-    index = i;
-    modal.style.display = "block";
-    modalImg.src = images[index];
+function openModal(index) {
+	currentIndex = index;
+	modal.style.display = "block";
+	modalImg.src = images[currentIndex];
 }
 
 function closeModal() {
-    modal.style.display = "none";
+	modal.style.display = "none";
 }
 
-function change(step) {
-    index += step;
-    if (index < 0) index = images.length - 1;
-    if (index >= images.length) index = 0;
-    modalImg.src = images[index];
+function changeImage(step) {
+	currentIndex += step;
+
+	if (currentIndex < 0) currentIndex = images.length - 1;
+	if (currentIndex >= images.length) currentIndex = 0;
+
+	modalImg.src = images[currentIndex];
 }
 </script>
 
