@@ -4,16 +4,20 @@
     <title>Gallery</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
 
     <style>
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            font-family: Arial;
+        }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 10px;
-            max-width: 900px;
-            margin: 0 auto;
-            padding-top: 100px;
+            padding: 20px;
         }
 
         .gallery img {
@@ -21,17 +25,13 @@
             height: 100px;
             object-fit: cover;
             cursor: pointer;
-            border-radius: 8px;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            z-index: 999;
-            padding-top: 60px;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.9);
@@ -41,26 +41,22 @@
         .modal img {
             max-width: 80%;
             max-height: 80%;
-            margin-top: 40px;
-            border-radius: 10px;
+            margin-top: 60px;
         }
 
         .close {
             position: absolute;
             top: 20px;
-            right: 40px;
-            color: white;
+            right: 30px;
             font-size: 30px;
             cursor: pointer;
         }
 
-        .nav-btn {
+        .nav {
             position: absolute;
             top: 50%;
-            color: white;
             font-size: 40px;
             cursor: pointer;
-            user-select: none;
         }
 
         .prev { left: 20px; }
@@ -68,69 +64,54 @@
     </style>
 </head>
 
-<body class="is-preload">
-<div id="wrapper">
-    <div id="bg"></div>
-    <div id="overlay"></div>
+<body>
 
-    <div id="main">
+<div class="gallery" id="gallery"></div>
 
-        <!-- Gallery -->
-        <div class="gallery" id="gallery"></div>
-
-        <!-- Modal -->
-        <div id="modal" class="modal">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <span class="nav-btn prev" onclick="changeImage(-1)">❮</span>
-            <img id="modalImg">
-            <span class="nav-btn next" onclick="changeImage(1)">❯</span>
-        </div>
-
-    </div>
+<div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">×</span>
+    <span class="nav prev" onclick="change(-1)">❮</span>
+    <img id="modalImg">
+    <span class="nav next" onclick="change(1)">❯</span>
 </div>
 
 <script>
 const images = [
-    // 🔥 اینجا لینک عکس‌هات رو بذار (۳۰ تا)
-    "images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg",
-    "images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg",
-    "images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg",
-    "images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg",
-    "images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg",
-    "images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg"
+  "https://picsum.photos/300?1",
+  "https://picsum.photos/300?2",
+  "https://picsum.photos/300?3",
+  "https://picsum.photos/300?4",
+  "https://picsum.photos/300?5"
 ];
 
 const gallery = document.getElementById("gallery");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
 
-let currentIndex = 0;
+let index = 0;
 
-// ساخت گالری
-images.forEach((src, index) => {
+images.forEach((src, i) => {
     const img = document.createElement("img");
     img.src = src;
-    img.onclick = () => openModal(index);
+    img.onclick = () => open(i);
     gallery.appendChild(img);
 });
 
-function openModal(index) {
-    currentIndex = index;
+function open(i) {
+    index = i;
     modal.style.display = "block";
-    modalImg.src = images[currentIndex];
+    modalImg.src = images[index];
 }
 
 function closeModal() {
     modal.style.display = "none";
 }
 
-function changeImage(step) {
-    currentIndex += step;
-
-    if (currentIndex < 0) currentIndex = images.length - 1;
-    if (currentIndex >= images.length) currentIndex = 0;
-
-    modalImg.src = images[currentIndex];
+function change(step) {
+    index += step;
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    modalImg.src = images[index];
 }
 </script>
 
