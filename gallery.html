@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Gallery</title>
+	<title>Mehran Farahi - Gallery</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -100,19 +100,8 @@
 <script>
 window.onload = function() { document.body.classList.remove('is-preload'); }
 
-// 🔥 برای تست (اگر عکس نداری)
-const images = [
- "https://picsum.photos/300?1",
- "https://picsum.photos/300?2",
- "https://picsum.photos/300?3",
- "https://picsum.photos/300?4",
- "https://picsum.photos/300?5",
- "https://picsum.photos/300?6",
- "https://picsum.photos/300?7",
- "https://picsum.photos/300?8",
- "https://picsum.photos/300?9",
- "https://picsum.photos/300?10"
-];
+// ۳۰ عکس آنلاین تصادفی
+const images = Array.from({length:30}, (_,i)=>`https://picsum.photos/300/200?random=${i+1}`);
 
 const gallery = document.getElementById("gallery");
 const modal = document.getElementById("modal");
@@ -124,6 +113,7 @@ let currentIndex = 0;
 images.forEach((src, index) => {
 	const img = document.createElement("img");
 	img.src = src;
+	img.alt = "Gallery image " + (index+1);
 	img.onclick = () => openModal(index);
 	gallery.appendChild(img);
 });
