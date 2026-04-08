@@ -7,8 +7,16 @@
 </head>
 <body>
 
-<div id="chat-container">
-  <div id="chat"></div>
+<div id="app">
+  <header>
+    <h1>ChatGPT حرفه‌ای</h1>
+    <button id="themeToggle">🌙</button>
+  </header>
+
+  <div id="chat-container">
+    <div id="chat"></div>
+  </div>
+
   <div id="input-area">
     <input type="text" id="userInput" placeholder="پیام خود را بنویسید..." onkeypress="if(event.key==='Enter'){sendMessage();}">
     <button onclick="sendMessage()">ارسال</button>
