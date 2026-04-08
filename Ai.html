@@ -1,26 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title>چت جی‌پی‌تی ساده</title>
-<style>
-  body { font-family: sans-serif; display:flex; flex-direction: column; height:100vh; margin:0;}
-  #chat { flex:1; padding:10px; overflow-y:auto; border-bottom:1px solid #ccc;}
-  #input-area { display:flex; padding:10px;}
-  #userInput { flex:1; padding:10px; font-size:16px;}
-  button { padding:10px 15px; font-size:16px; }
-  .user { color: blue; margin:5px 0; }
-  .bot { color: green; margin:5px 0; }
-</style>
+<title>چت جی‌پی‌تی حرفه‌ای</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="chat"></div>
-
-<div id="input-area">
-  <input type="text" id="userInput" placeholder="پیام خود را بنویسید...">
-  <button onclick="sendMessage()">ارسال</button>
+<div id="chat-container">
+  <div id="chat"></div>
+  <div id="input-area">
+    <input type="text" id="userInput" placeholder="پیام خود را بنویسید..." onkeypress="if(event.key==='Enter'){sendMessage();}">
+    <button onclick="sendMessage()">ارسال</button>
+  </div>
 </div>
 
 <script src="chatbot.js"></script>
