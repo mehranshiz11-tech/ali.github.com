@@ -1,11 +1,12 @@
-/* کل بدن صفحه */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* تنظیم کل صفحه */
+html, body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f5f5f5;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,15 +16,13 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  height: 90vh;          /* تقریبا کل ارتفاع صفحه */
-  width: 95vw;           /* تقریبا کل عرض صفحه */
-  max-width: 700px;      /* حداکثر اندازه روی دسکتاپ */
-  min-width: 300px;      /* حداقل اندازه برای موبایل */
-  border: 1px solid #ccc;
-  border-radius: 15px;
+  height: 100vh;   /* تمام ارتفاع صفحه */
+  width: 100vw;    /* تمام عرض صفحه */
+  max-width: 1000px; /* حداکثر اندازه روی دسکتاپ بزرگ */
+  max-height: 100vh;
+  border-radius: 0; /* کل صفحه پر بشه */
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* هدر */
@@ -38,7 +37,7 @@ header {
 
 /* کانتینر چت */
 #chat-container {
-  flex: 1;
+  flex: 1; /* پر کردن کل فضای باقی مانده */
   padding: 15px;
   overflow-y: auto;
   display: flex;
@@ -54,7 +53,6 @@ header {
   border-radius: 15px;
   word-wrap: break-word;
   position: relative;
-  animation: fadeIn 0.3s;
 }
 
 .user-bubble {
@@ -114,7 +112,6 @@ button {
 }
 
 /* انیمیشن‌ها */
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 @keyframes blink { 0%, 80%, 100% {opacity:0;} 40% {opacity:1;} }
 
 /* حالت تاریک */
@@ -139,13 +136,8 @@ body.dark .typing span {
   background: #fff;
 }
 
-/* برای موبایل */
+/* موبایل */
 @media (max-width: 600px) {
-  #app {
-    height: 95vh;
-    width: 98vw;
-  }
-
   #userInput, button {
     font-size: 14px;
   }
