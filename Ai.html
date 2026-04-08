@@ -2,23 +2,20 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title>چت جی‌پی‌تی حرفه‌ای</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT UI</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="app">
-  <header>
-    <h1>ChatGPT حرفه‌ای</h1>
-    <button id="themeToggle">🌙</button>
-  </header>
+  <header>ChatGPT</header>
 
-  <div id="chat-container">
-    <div id="chat"></div>
-  </div>
+  <div id="chat"></div>
 
   <div id="input-area">
-    <input type="text" id="userInput" placeholder="پیام خود را بنویسید..." onkeypress="if(event.key==='Enter'){sendMessage();}">
+    <input type="text" id="userInput" placeholder="پیام..." 
+      onkeypress="if(event.key==='Enter'){sendMessage();}">
     <button onclick="sendMessage()">ارسال</button>
   </div>
 </div>
