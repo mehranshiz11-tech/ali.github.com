@@ -1,30 +1,44 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Mehran Farahi - Gallery</title>
+    <title>Mehran Farahi - Fullscreen Gallery</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        /* گالری */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #wrapper, #main {
+            height: 100%;
+        }
+
+        /* گالری تمام صفحه */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            gap: 10px;
-            max-width: 700px;
-            margin: 20px auto;
-            z-index: 5; /* روی overlay */
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-auto-rows: 120px;
+            gap: 5px;
+            width: 100%;
+            height: 100%;
+            padding: 5px;
             position: relative;
+            z-index: 10; /* روی overlay */
+            overflow-y: auto;
         }
 
         .gallery img {
             width: 100%;
-            height: 90px;
+            height: 100%;
             object-fit: cover;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 4px;
             transition: transform 0.2s;
         }
 
@@ -36,7 +50,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 999;
+            z-index: 9999;
             top: 0;
             left: 0;
             width: 100%;
@@ -82,9 +96,9 @@
 
     <div id="main">
 
-        <header id="header">
-            <h1>Mehran Farahi</h1>
-            <p>Gallery</p>
+        <header id="header" style="position: absolute; top: 10px; left: 20px; z-index: 20;">
+            <h1 style="color:white;">Mehran Farahi</h1>
+            <p style="color:white;">Fullscreen Gallery</p>
         </header>
 
         <!-- گالری -->
@@ -98,18 +112,14 @@
             <span class="nav-btn next" onclick="changeImage(1)">❯</span>
         </div>
 
-        <footer id="footer">
-            <span class="copyright">&copy; Mehran</span>
-        </footer>
-
     </div>
 </div>
 
 <script>
 window.onload = function() { document.body.classList.remove('is-preload'); }
 
-// ۳۰ عکس آنلاین
-const images = Array.from({length:30}, (_,i)=>`https://picsum.photos/300/200?random=${i+1}`);
+// ۳۰ عکس آنلاین تصادفی
+const images = Array.from({length:30}, (_,i)=>`https://picsum.photos/400/400?random=${i+1}`);
 
 const gallery = document.getElementById("gallery");
 const modal = document.getElementById("modal");
@@ -146,4 +156,3 @@ function changeImage(step) {
 
 </body>
 </html>
-
