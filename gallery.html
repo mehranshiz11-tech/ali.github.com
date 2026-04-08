@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Mehran Farahi - Fullscreen Gallery</title>
+    <title>Fullscreen Gallery</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -20,16 +20,6 @@
         }
         #overlay { background: rgba(0,0,0,0.3); }
 
-        /* هدر ثابت */
-        #header {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            z-index: 20;
-            background: rgba(0,0,0,0.3);
-            padding: 10px 20px;
-            color: white;
-        }
-
         /* گالری تمام صفحه */
         .gallery {
             display: grid;
@@ -40,7 +30,7 @@
             height: 100%;
             position: relative;
             z-index: 10;
-            padding: 70px 5px 5px 5px; /* فاصله از بالای هدر */
+            padding:5px;
             overflow-y: auto;
         }
 
@@ -77,11 +67,6 @@
 <div id="wrapper">
     <div id="bg"></div>
     <div id="overlay"></div>
-
-    <header id="header">
-        <h1>Mehran Farahi</h1>
-        <p>Fullscreen Gallery</p>
-    </header>
 
     <!-- گالری -->
     <div class="gallery" id="gallery"></div>
