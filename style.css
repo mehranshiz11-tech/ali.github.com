@@ -1,31 +1,82 @@
 body {
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   background: #f5f5f5;
 }
 
-#chat-container {
-  width: 400px;
-  height: 600px;
+#app {
   display: flex;
   flex-direction: column;
+  width: 500px;
+  height: 700px;
+  margin: 20px auto;
   border: 1px solid #ccc;
+  border-radius: 15px;
+  overflow: hidden;
   background: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-#chat {
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #007bff;
+  color: #fff;
+}
+
+#chat-container {
   flex: 1;
   padding: 15px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: #f0f0f0;
 }
+
+.user-bubble, .bot-bubble {
+  max-width: 75%;
+  padding: 12px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  position: relative;
+  animation: fadeIn 0.3s;
+}
+
+.user-bubble {
+  background: #007bff;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.bot-bubble {
+  background: #e5e5ea;
+  color: #000;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+.typing {
+  font-style: italic;
+  color: #555;
+  display: flex;
+  gap: 5px;
+}
+
+.typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #555;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
 
 #input-area {
   display: flex;
@@ -34,40 +85,41 @@ body {
 
 #userInput {
   flex: 1;
-  padding: 10px;
-  border: none;
+  padding: 12px;
   font-size: 16px;
+  border: none;
+  outline: none;
 }
 
 button {
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 12px 15px;
   border: none;
   background: #007bff;
   color: #fff;
   cursor: pointer;
 }
 
-.user-bubble, .bot-bubble {
-  max-width: 80%;
-  padding: 10px;
-  border-radius: 10px;
-  word-wrap: break-word;
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes blink { 0%, 80%, 100% {opacity:0;} 40% {opacity:1;} }
+
+/* حالت تاریک */
+body.dark {
+  background: #181818;
 }
 
-.user-bubble {
-  background: #007bff;
+body.dark #app {
+  background: #242424;
+}
+
+body.dark #chat-container {
+  background: #2b2b2b;
+}
+
+body.dark .bot-bubble {
+  background: #3a3a3a;
   color: #fff;
-  align-self: flex-end;
 }
 
-.bot-bubble {
-  background: #e5e5ea;
-  color: #000;
-  align-self: flex-start;
-}
-
-.typing {
-  font-style: italic;
-  color: #888;
+body.dark .typing span {
+  background: #fff;
 }
